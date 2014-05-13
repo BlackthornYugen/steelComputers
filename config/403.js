@@ -42,7 +42,7 @@ module.exports[403] = function badRequest(message, req, res) {
   }
   // And render view
   res.render(viewFilePath, result, function (err) {
-    // If the view doesn't exist, or an error occured, send json
+    // If the view doesn't exist, or an error occurred, send json
     if (err) { return res.json(result, result.status); }
     
     // Otherwise, serve the `views/403.*` page
