@@ -1,0 +1,7 @@
+<%
+// This bread status partial located in /views/Foo/partials
+bread = bread || false; // Bread defaults to false.
+var localBttnStyle = "background:" + (bread ? "green" : "red") + "; " +
+                     "color:" + (bread ? "white" : "black") + "; ";
+%>
+<button<%= bread ? "" : " disabled" %> style="<%=localBttnStyle%>" onclick="alert('BREAD!')">Bread <%= bread ? "Success" : "Failure" %></button>

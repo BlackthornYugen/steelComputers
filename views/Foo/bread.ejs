@@ -1,1 +1,8 @@
 <!-- This is /views/Foo/bread.ejs -->
+<h1><%= title %></h1>
+<ol>
+    <li><a href="../">Go to foo?</a></li>
+    <li><a href="/">Go to root?</a></li>
+</ol>
+<p>This was just an experiment to see how routing works in Sails. </p>
+<%- partial('partials/breadStatus') %>

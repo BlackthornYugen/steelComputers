@@ -17,11 +17,23 @@
 
 var FooController = {
     index: function(req, res) {
-        return res.view({title:"Foo"});
+        var viewData = {title:"Foo", bread:false};
+
+        if (req.isJson || req.isSocket){
+            return res.json(viewData);
+        } else {
+            return res.view(viewData);
+        }
     },
 
     bread: function(req, res) {
-        return res.view('Foo/bread',{title:"Bread?"});
+        var viewData = {title:"Bread?", bread:true};
+
+        if (req.isJson || req.isSocket){
+            return res.json(viewData);
+        } else {
+            return res.view("Foo/bread", viewData);
+        }
     }
 }
 

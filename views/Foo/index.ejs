@@ -1,1 +1,12 @@
 <!-- This is /views/Foo/index.ejs -->
+<h1><%= title %></h1>
+<ol>
+    <li><a href="./bread/">Go to bread?</a></li>
+    <li><a href="/">Go to root?</a></li>
+</ol>
+<p>
+    This is just a controller to help me learn about sails/mvc stuff. It shouldn't be here in production but if it is... My bad.<br>
+    <code>--John Steel</code>
+</p>
+
+<%- partial('partials/breadStatus') %>
