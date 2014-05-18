@@ -15,16 +15,14 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-module.exports = {
-    
-  
+var FooController = {
+    index: function(req, res) {
+        return res.view({title:"Foo"});
+    },
 
+    bread: function(req, res) {
+        return res.view('Foo/bread',{title:"Bread?"});
+    }
+}
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to FooController)
-   */
-  _config: {}
-
-  
-};
+module.exports = FooController;
