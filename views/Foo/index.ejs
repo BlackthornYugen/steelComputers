@@ -9,4 +9,30 @@
     <code>--John Steel</code>
 </p>
 
+<ul>
+<% fooArray.forEach(function(thisFoo){
+%>
+
+    <li>
+        <a href="<%=thisFoo.id%>" class="dude"><%=thisFoo.name||"?"%></a>
+        <span class="hp">(<%=thisFoo.health||"?"%>)</span>
+        <span class="mana">(<%=thisFoo.mana||"?"%>)</span>
+        <a href="destroy?id=<%=thisFoo.id%>" title="Delete <%=thisFoo.name%>" alt="Delete <%=thisFoo.name%>" class="delete">[X]</a>
+    </li>
+
+<%
+})
+%>
+</ul>
+
+<form action="create" method="post">
+    <label for="name">Username</label>
+    <input type="text" name="name" id="name" />
+    <label for="health">Health</label>
+    <input type="text" name="health" id="health" />
+    <label for="mana">Mana</label>
+    <input type="text" name="mana" id="mana" />
+    <input type="submit" value="Add Dude" />
+</form>
+
 <%- partial('partials/breadStatus') %>

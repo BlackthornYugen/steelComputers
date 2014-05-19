@@ -17,13 +17,20 @@
 
 var FooController = {
     index: function(req, res) {
-        var viewData = {title:"Foo", bread:false};
+        Foo.find().limit(100).exec(function (err, foo) {
+            var viewData = {title: "Foo", bread: false, fooArray: foo};
 
-        if (req.isJson || req.isSocket){
-            return res.json(viewData);
-        } else {
-            return res.view(viewData);
-        }
+            if(req.url.split('').reverse()[0] !== "/") {
+                res.redirect(req.url+'/',301);
+            }
+
+            if (req.isJson || req.isSocket){
+                return res.json(viewData);
+            } else {
+                return res.view('Foo/index', viewData);
+            }
+        });
+
     },
 
     bread: function(req, res) {
@@ -34,7 +41,13 @@ var FooController = {
         } else {
             return res.view("Foo/bread", viewData);
         }
-    }
+    },
+
+    /**
+     * Overrides for the settings in `config/controllers.js`
+     * (specific to BlogController)
+     */
+    _config: {}
 }
 
 module.exports = FooController;

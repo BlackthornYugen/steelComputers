@@ -8,11 +8,27 @@
 
 module.exports = {
 
-  attributes: {
-      name: {
+    attributes: {
+
+        name: {
           type: 'string',
-          maxLength: ''
-      }
-  }
+          maxLength: 50,
+          minLength: 2,
+          unique: true
+        },
+
+        health: {
+          type: 'integer',
+          max: 999,
+          min: 0
+        },
+
+        mana: {
+          type: 'integer',
+          max: 999,
+          min: 0
+        }
+
+    }
 
 };
