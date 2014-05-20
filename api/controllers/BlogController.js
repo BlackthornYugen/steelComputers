@@ -18,52 +18,17 @@
 module.exports = {
     
   index: function (req, res) {
-
-      Blog.find().limit(100).exec(function (err, blogs) {
-          if(req.url.split('').reverse()[0] !== "/") {
-              return res.redirect(req.url+'/', 301);
-          }  else {
-              return res.view('blog/index', {blogs});
-          }
-      });
-  },
-
-  /**
-   * Action blueprints:
-   *    `/blog/create`
-   */
-   create: function (req, res) {
-    
-    // Send a JSON response
-    return res.json({
-      hello: 'world'
-    });
-  },
-
-
-  /**
-   * Action blueprints:
-   *    `/blog/destroy`
-   */
-   destroy: function (req, res) {
-    
-    // Send a JSON response
-    return res.json({
-      hello: 'world'
-    });
-  },
-
-
-  /**
-   * Action blueprints:
-   *    `/blog/update`
-   */
-   update: function (req, res) {
-    
-    // Send a JSON response
-    return res.json({
-      hello: 'world'
-    });
+      if(req.url.split('').reverse()[0] !== "/") {
+          return res.redirect(req.url+'/', 301);
+      } else {
+          Blog.find().limit(100).exec(function (err, blogs) {
+              if (req.isJson || req.isSocket) {
+                  return res.json({blogs: blogs});
+              } else {
+                  return res.view('blog/index', {title: 'Blogs', blogs: blogs});
+              }
+          });
+      }
   },
 
   /**

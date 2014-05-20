@@ -9,9 +9,20 @@
 module.exports = {
 
   attributes: {
-      title: 'string',
-      content: 'string',
-      tags: 'array'
+      title: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 15,
+          unique: true
+      },
+      content: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 2000
+      },
+      tags: {
+          type: 'array'
+      }
   }
 
 };

@@ -1,0 +1,3 @@
+<% blogs.forEach(function(thisBlog){ %>
+<%- partial('./blogElement', {id:thisBlog.id, title:thisBlog.title, content:thisBlog.content}) %>
+<% }) %>
